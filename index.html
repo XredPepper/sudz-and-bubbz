@@ -13,7 +13,7 @@
   <nav class="navbar">
     <div class="nav-container">
       <div class="logo">
-        <i class="fas fa-car"></i>
+        <img src="logo.png" alt="Jerry's Sudz and Bubbz Auto Detailing" class="logo-img">
         <span>Sudz and Bubbz</span>
       </div>
       <div class="nav-toggle" id="navToggle">
@@ -23,6 +23,7 @@
         <li><a href="#home" class="nav-link">Home</a></li>
         <li><a href="#services" class="nav-link">Services</a></li>
         <li><a href="#pricing" class="nav-link">Pricing</a></li>
+        <li><a href="#merch" class="nav-link">Merch</a></li>
         <li><a href="#about" class="nav-link">About</a></li>
         <li><a href="#contact" class="nav-link">Contact</a></li>
         <li><a href="#contact" class="nav-link cta-button">Book Now</a></li>
@@ -42,7 +43,7 @@
     </div>
     <div class="hero-image">
       <div class="car-showcase">
-        <i class="fas fa-car-side"></i>
+        <img src="logo.png" alt="Jerry's Sudz and Bubbz Auto Detailing" class="hero-logo">
       </div>
     </div>
   </section>
@@ -162,6 +163,120 @@
             <li><i class="fas fa-check"></i> 1-year protection</li>
           </ul>
           <button class="btn btn-outline stripe-checkout" data-price="299" data-name="Premium Plus">Book & Pay Now</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Merchandise Section -->
+  <section id="merch" class="merch">
+    <div class="container">
+      <h2 class="section-title">Sudz and Bubbz Merchandise</h2>
+      <p class="section-subtitle">Show your love for clean cars with our branded merchandise</p>
+      
+      <div class="merch-grid">
+        <!-- T-Shirts -->
+        <div class="merch-card">
+          <div class="merch-image">
+            <i class="fas fa-tshirt"></i>
+            <span class="merch-badge">New</span>
+          </div>
+          <h3>Premium T-Shirt</h3>
+          <p class="merch-description">100% cotton comfort with our signature Sudz and Bubbz logo. Available in multiple colors and sizes.</p>
+          <div class="merch-details">
+            <p class="merch-feature"><i class="fas fa-check"></i> 100% Premium Cotton</p>
+            <p class="merch-feature"><i class="fas fa-check"></i> Available in S, M, L, XL, XXL</p>
+            <p class="merch-feature"><i class="fas fa-check"></i> Machine Washable</p>
+          </div>
+          <div class="merch-price">
+            <span class="price">$24.99</span>
+          </div>
+          <div class="merch-options">
+            <select class="size-select" data-product="shirt">
+              <option value="">Select Size</option>
+              <option value="S">Small</option>
+              <option value="M">Medium</option>
+              <option value="L">Large</option>
+              <option value="XL">X-Large</option>
+              <option value="XXL">XX-Large</option>
+            </select>
+            <select class="color-select" data-product="shirt">
+              <option value="">Select Color</option>
+              <option value="black">Black</option>
+              <option value="white">White</option>
+              <option value="red">Red</option>
+              <option value="gray">Gray</option>
+            </select>
+          </div>
+          <button class="btn btn-primary add-to-cart" data-product="Premium T-Shirt" data-price="24.99">
+            <i class="fas fa-shopping-cart"></i> Add to Cart
+          </button>
+        </div>
+
+        <!-- Hats -->
+        <div class="merch-card">
+          <div class="merch-image">
+            <i class="fas fa-hat-cowboy"></i>
+            <span class="merch-badge">Popular</span>
+          </div>
+          <h3>Snapback Hat</h3>
+          <p class="merch-description">Classic snapback with embroidered logo. Perfect for sunny days at the car wash.</p>
+          <div class="merch-details">
+            <p class="merch-feature"><i class="fas fa-check"></i> Adjustable Snapback</p>
+            <p class="merch-feature"><i class="fas fa-check"></i> Embroidered Logo</p>
+            <p class="merch-feature"><i class="fas fa-check"></i> UV Protection</p>
+          </div>
+          <div class="merch-price">
+            <span class="price">$19.99</span>
+          </div>
+          <div class="merch-options">
+            <select class="color-select" data-product="hat">
+              <option value="">Select Color</option>
+              <option value="black">Black</option>
+              <option value="navy">Navy Blue</option>
+              <option value="red">Red</option>
+              <option value="gray">Gray</option>
+            </select>
+          </div>
+          <button class="btn btn-primary add-to-cart" data-product="Snapback Hat" data-price="19.99">
+            <i class="fas fa-shopping-cart"></i> Add to Cart
+          </button>
+        </div>
+
+        <!-- Detail Kit -->
+        <div class="merch-card">
+          <div class="merch-image">
+            <i class="fas fa-toolbox"></i>
+            <span class="merch-badge">Best Value</span>
+          </div>
+          <h3>Pro Detail Kit</h3>
+          <p class="merch-description">Everything you need to keep your car looking showroom fresh between professional details.</p>
+          <div class="merch-details">
+            <p class="merch-feature"><i class="fas fa-check"></i> Premium Car Shampoo (16oz)</p>
+            <p class="merch-feature"><i class="fas fa-check"></i> Quick Detail Spray (16oz)</p>
+            <p class="merch-feature"><i class="fas fa-check"></i> Microfiber Towels (3 pack)</p>
+            <p class="merch-feature"><i class="fas fa-check"></i> Tire Shine (12oz)</p>
+            <p class="merch-feature"><i class="fas fa-check"></i> Air Freshener</p>
+          </div>
+          <div class="merch-price">
+            <span class="price">$49.99</span>
+            <span class="price-original">$69.99</span>
+          </div>
+          <button class="btn btn-primary add-to-cart" data-product="Pro Detail Kit" data-price="49.99">
+            <i class="fas fa-shopping-cart"></i> Add to Cart
+          </button>
+        </div>
+      </div>
+
+      <!-- Shopping Cart -->
+      <div class="shopping-cart" id="shoppingCart">
+        <h3><i class="fas fa-shopping-cart"></i> Shopping Cart <span class="cart-count">(0)</span></h3>
+        <div class="cart-items" id="cartItems">
+          <p class="empty-cart">Your cart is empty</p>
+        </div>
+        <div class="cart-total" id="cartTotal" style="display: none;">
+          <p>Total: <span class="total-amount">$0.00</span></p>
+          <button class="btn btn-primary checkout-btn" id="checkoutBtn">Proceed to Checkout</button>
         </div>
       </div>
     </div>
@@ -329,7 +444,8 @@
     <div class="container">
       <div class="footer-content">
         <div class="footer-section">
-          <h4>Sudz and Bubbz</h4>
+          <img src="logo.png" alt="Jerry's Sudz and Bubbz Auto Detailing" class="footer-logo">
+          <h4>Jerry's Sudz and Bubbz</h4>
           <p>Your trusted partner for professional car detailing services.</p>
           <div class="social-links">
             <a href="#"><i class="fab fa-facebook"></i></a>

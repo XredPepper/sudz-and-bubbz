@@ -153,6 +153,10 @@ document.querySelectorAll('.stripe-checkout').forEach(button => {
     // Mount Stripe card element
     cardElement.mount('#card-element');
     
+    // Show appointment fields for services
+    document.getElementById('appointmentDate').closest('.form-group').style.display = 'block';
+    document.getElementById('appointmentTime').closest('.form-group').style.display = 'block';
+    
     // Set minimum date to today
     const today = new Date().toISOString().split('T')[0];
     document.getElementById('appointmentDate').setAttribute('min', today);
@@ -298,3 +302,189 @@ if (statsSection) {
   
   statsObserver.observe(statsSection);
 }
+
+// Shopping Cart Functionality
+let cart = [];
+const cartItemsContainer = document.getElementById('cartItems');
+const cartTotal = document.getElementById('cartTotal');
+const cartCount = document.querySelector('.cart-count');
+const totalAmount = document.querySelector('.total-amount');
+
+// Load cart from localStorage
+function loadCart() {
+  const savedCart = localStorage.getItem('sudzBubbzCart');
+  if (savedCart) {
+    cart = JSON.parse(savedCart);
+    updateCartDisplay();
+  }
+}
+
+// Save cart to localStorage
+function saveCart() {
+  localStorage.setItem('sudzBubbzCart', JSON.stringify(cart));
+}
+
+// Add to cart functionality
+document.querySelectorAll('.add-to-cart').forEach(button => {
+  button.addEventListener('click', function() {
+    const product = this.dataset.product;
+    const price = parseFloat(this.dataset.price);
+    const card = this.closest('.merch-card');
+    
+    // Get selected options
+    const sizeSelect = card.querySelector('.size-select');
+    const colorSelect = card.querySelector('.color-select');
+    
+    // Validate selections
+    if (sizeSelect && !sizeSelect.value) {
+      alert('Please select a size');
+      sizeSelect.focus();
+      return;
+    }
+    
+    if (colorSelect && !colorSelect.value) {
+      alert('Please select a color');
+      colorSelect.focus();
+      return;
+    }
+    
+    // Create cart item
+    const cartItem = {
+      id: Date.now(),
+      product: product,
+      price: price,
+      size: sizeSelect ? sizeSelect.value : null,
+      color: colorSelect ? colorSelect.value : null
+    };
+    
+    // Add to cart
+    cart.push(cartItem);
+    saveCart();
+    updateCartDisplay();
+    
+    // Show success message
+    this.innerHTML = '<i class="fas fa-check"></i> Added!';
+    setTimeout(() => {
+      this.innerHTML = '<i class="fas fa-shopping-cart"></i> Add to Cart';
+    }, 1500);
+    
+    // Reset selections
+    if (sizeSelect) sizeSelect.value = '';
+    if (colorSelect) colorSelect.value = '';
+  });
+});
+
+// Update cart display
+function updateCartDisplay() {
+  if (cart.length === 0) {
+    cartItemsContainer.innerHTML = '<p class="empty-cart">Your cart is empty</p>';
+    cartTotal.style.display = 'none';
+    cartCount.textContent = '(0)';
+  } else {
+    // Update cart items
+    cartItemsContainer.innerHTML = cart.map(item => {
+      let details = [];
+      if (item.size) details.push(`Size: ${item.size}`);
+      if (item.color) details.push(`Color: ${item.color}`);
+      
+      return `
+        <div class="cart-item">
+          <div class="cart-item-info">
+            <h4>${item.product}</h4>
+            <p>${details.join(', ')}</p>
+          </div>
+          <div class="cart-item-price">
+            <span>$${item.price.toFixed(2)}</span>
+            <button class="remove-item" data-id="${item.id}">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+        </div>
+      `;
+    }).join('');
+    
+    // Update total
+    const total = cart.reduce((sum, item) => sum + item.price, 0);
+    totalAmount.textContent = `$${total.toFixed(2)}`;
+    cartTotal.style.display = 'block';
+    cartCount.textContent = `(${cart.length})`;
+    
+    // Add remove functionality
+    document.querySelectorAll('.remove-item').forEach(button => {
+      button.addEventListener('click', function() {
+        const id = parseInt(this.dataset.id);
+        cart = cart.filter(item => item.id !== id);
+        saveCart();
+        updateCartDisplay();
+      });
+    });
+  }
+}
+
+// Checkout functionality
+const checkoutBtn = document.getElementById('checkoutBtn');
+if (checkoutBtn) {
+  checkoutBtn.addEventListener('click', function() {
+    if (cart.length === 0) {
+      alert('Your cart is empty');
+      return;
+    }
+    
+    // Calculate total
+    const total = cart.reduce((sum, item) => sum + item.price, 0);
+    
+    // Show payment modal with merchandise details
+    currentPrice = total;
+    currentService = 'Merchandise Order';
+    
+    // Update payment details with cart items
+    const itemsList = cart.map(item => {
+      let details = [];
+      if (item.size) details.push(`Size: ${item.size}`);
+      if (item.color) details.push(`Color: ${item.color}`);
+      return `<li>${item.product} ${details.length ? '(' + details.join(', ') + ')' : ''} - $${item.price.toFixed(2)}</li>`;
+    }).join('');
+    
+    document.getElementById('paymentDetails').innerHTML = `
+      <h3>Merchandise Order</h3>
+      <ul style="list-style: none; padding: 0; margin: 1rem 0;">
+        ${itemsList}
+      </ul>
+      <p style="font-weight: bold; font-size: 1.25rem;">Total: $${total.toFixed(2)}</p>
+    `;
+    
+    // Show modal
+    modal.style.display = 'block';
+    
+    // Mount Stripe card element
+    cardElement.mount('#card-element');
+    
+    // Hide appointment fields for merchandise
+    document.getElementById('appointmentDate').closest('.form-group').style.display = 'none';
+    document.getElementById('appointmentTime').closest('.form-group').style.display = 'none';
+  });
+}
+
+// Clear cart after successful payment
+const originalPaymentHandler = paymentForm.onsubmit;
+paymentForm.addEventListener('submit', async function(e) {
+  if (currentService === 'Merchandise Order') {
+    // After successful payment, clear the cart
+    setTimeout(() => {
+      cart = [];
+      saveCart();
+      updateCartDisplay();
+    }, 2000);
+  }
+});
+
+// Load cart on page load
+loadCart();
+
+// Animate merchandise cards on scroll
+document.querySelectorAll('.merch-card').forEach(card => {
+  card.style.opacity = '0';
+  card.style.transform = 'translateY(20px)';
+  card.style.transition = 'all 0.6s ease';
+  observer.observe(card);
+});
