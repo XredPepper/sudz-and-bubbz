@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sudz and Bubbz - Professional Car Detailing Services</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo">
+        <i class="fas fa-car"></i>
+        <span>Sudz and Bubbz</span>
+      </div>
+      <div class="nav-toggle" id="navToggle">
+        <i class="fas fa-bars"></i>
+      </div>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="#home" class="nav-link">Home</a></li>
+        <li><a href="#services" class="nav-link">Services</a></li>
+        <li><a href="#pricing" class="nav-link">Pricing</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+        <li><a href="#contact" class="nav-link cta-button">Book Now</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h1 class="hero-title">Premium Car Detailing Services</h1>
+      <p class="hero-subtitle">Transform your vehicle with our professional detailing services</p>
+      <div class="hero-buttons">
+        <a href="#services" class="btn btn-primary">View Services</a>
+        <a href="#contact" class="btn btn-secondary">Get Quote</a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <div class="car-showcase">
+        <i class="fas fa-car-side"></i>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="services">
+    <div class="container">
+      <h2 class="section-title">Our Services</h2>
+      <p class="section-subtitle">Professional detailing services to keep your car looking its best</p>
+      
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-soap"></i>
+          </div>
+          <h3>Exterior Wash & Wax</h3>
+          <p>Complete exterior cleaning with premium wax protection for lasting shine</p>
+          <ul class="service-features">
+            <li><i class="fas fa-check"></i> Hand wash & dry</li>
+            <li><i class="fas fa-check"></i> Clay bar treatment</li>
+            <li><i class="fas fa-check"></i> Premium wax application</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-spray-can"></i>
+          </div>
+          <h3>Interior Detailing</h3>
+          <p>Deep cleaning and conditioning of all interior surfaces</p>
+          <ul class="service-features">
+            <li><i class="fas fa-check"></i> Vacuum & shampoo</li>
+            <li><i class="fas fa-check"></i> Leather conditioning</li>
+            <li><i class="fas fa-check"></i> Odor elimination</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <h3>Paint Protection</h3>
+          <p>Advanced ceramic coating for ultimate paint protection</p>
+          <ul class="service-features">
+            <li><i class="fas fa-check"></i> Ceramic coating</li>
+            <li><i class="fas fa-check"></i> Paint correction</li>
+            <li><i class="fas fa-check"></i> 5-year warranty</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-star"></i>
+          </div>
+          <h3>Premium Package</h3>
+          <p>Complete inside and out detailing with all premium services</p>
+          <ul class="service-features">
+            <li><i class="fas fa-check"></i> Full interior & exterior</li>
+            <li><i class="fas fa-check"></i> Engine bay cleaning</li>
+            <li><i class="fas fa-check"></i> Headlight restoration</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section id="pricing" class="pricing">
+    <div class="container">
+      <h2 class="section-title">Pricing Plans</h2>
+      <p class="section-subtitle">Choose the perfect package for your vehicle</p>
+      
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <h3 class="plan-name">Basic Wash</h3>
+          <div class="plan-price">
+            <span class="currency">$</span>
+            <span class="amount">49</span>
+          </div>
+          <ul class="plan-features">
+            <li><i class="fas fa-check"></i> Exterior hand wash</li>
+            <li><i class="fas fa-check"></i> Tire cleaning</li>
+            <li><i class="fas fa-check"></i> Window cleaning</li>
+            <li><i class="fas fa-check"></i> Air freshener</li>
+          </ul>
+          <button class="btn btn-outline stripe-checkout" data-price="49" data-name="Basic Wash">Book & Pay Now</button>
+        </div>
+
+        <div class="pricing-card featured">
+          <div class="badge">Most Popular</div>
+          <h3 class="plan-name">Full Detail</h3>
+          <div class="plan-price">
+            <span class="currency">$</span>
+            <span class="amount">149</span>
+          </div>
+          <ul class="plan-features">
+            <li><i class="fas fa-check"></i> Everything in Basic</li>
+            <li><i class="fas fa-check"></i> Interior deep clean</li>
+            <li><i class="fas fa-check"></i> Wax application</li>
+            <li><i class="fas fa-check"></i> Leather conditioning</li>
+            <li><i class="fas fa-check"></i> Engine bay cleaning</li>
+          </ul>
+          <button class="btn btn-primary stripe-checkout" data-price="149" data-name="Full Detail">Book & Pay Now</button>
+        </div>
+
+        <div class="pricing-card">
+          <h3 class="plan-name">Premium Plus</h3>
+          <div class="plan-price">
+            <span class="currency">$</span>
+            <span class="amount">299</span>
+          </div>
+          <ul class="plan-features">
+            <li><i class="fas fa-check"></i> Everything in Full Detail</li>
+            <li><i class="fas fa-check"></i> Paint correction</li>
+            <li><i class="fas fa-check"></i> Ceramic coating</li>
+            <li><i class="fas fa-check"></i> Headlight restoration</li>
+            <li><i class="fas fa-check"></i> 1-year protection</li>
+          </ul>
+          <button class="btn btn-outline stripe-checkout" data-price="299" data-name="Premium Plus">Book & Pay Now</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="about">
+    <div class="container">
+      <div class="about-content">
+        <div class="about-text">
+          <h2 class="section-title">About Sudz and Bubbz</h2>
+          <p>With over 10 years of experience in professional car detailing, we take pride in delivering exceptional results that exceed our customers' expectations. Our team of certified detailers uses only the highest quality products and latest techniques to ensure your vehicle looks its absolute best.</p>
+          
+          <div class="stats">
+            <div class="stat">
+              <h3>5000+</h3>
+              <p>Happy Customers</p>
+            </div>
+            <div class="stat">
+              <h3>10+</h3>
+              <p>Years Experience</p>
+            </div>
+            <div class="stat">
+              <h3>100%</h3>
+              <p>Satisfaction</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="about-features">
+          <div class="feature">
+            <i class="fas fa-certificate"></i>
+            <h4>Certified Professionals</h4>
+            <p>Our team is trained and certified in the latest detailing techniques</p>
+          </div>
+          <div class="feature">
+            <i class="fas fa-leaf"></i>
+            <h4>Eco-Friendly Products</h4>
+            <p>We use environmentally safe products that are gentle on your car</p>
+          </div>
+          <div class="feature">
+            <i class="fas fa-clock"></i>
+            <h4>Convenient Service</h4>
+            <p>Flexible scheduling and mobile service options available</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <h2 class="section-title">Get In Touch</h2>
+      <p class="section-subtitle">Ready to give your car the treatment it deserves?</p>
+      
+      <div class="contact-content">
+        <div class="contact-info">
+          <div class="info-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <div>
+              <h4>Location</h4>
+              <p>123 Main Street<br>City, State 12345</p>
+            </div>
+          </div>
+          
+          <div class="info-item">
+            <i class="fas fa-phone"></i>
+            <div>
+              <h4>Phone</h4>
+              <p>(555) 123-4567</p>
+            </div>
+          </div>
+          
+          <div class="info-item">
+            <i class="fas fa-envelope"></i>
+            <div>
+              <h4>Email</h4>
+              <p>info@sudzandbubbz.com</p>
+            </div>
+          </div>
+          
+          <div class="info-item">
+            <i class="fas fa-clock"></i>
+            <div>
+              <h4>Hours</h4>
+              <p>Mon-Sat: 8AM - 6PM<br>Sunday: 10AM - 4PM</p>
+            </div>
+          </div>
+        </div>
+        
+        <form class="contact-form" id="contactForm">
+          <div class="form-group">
+            <input type="text" id="name" placeholder="Your Name" required>
+          </div>
+          <div class="form-group">
+            <input type="email" id="email" placeholder="Your Email" required>
+          </div>
+          <div class="form-group">
+            <input type="tel" id="phone" placeholder="Your Phone">
+          </div>
+          <div class="form-group">
+            <select id="service" required>
+              <option value="">Select Service</option>
+              <option value="basic">Basic Wash</option>
+              <option value="full">Full Detail</option>
+              <option value="premium">Premium Plus</option>
+              <option value="custom">Custom Quote</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <textarea id="message" rows="5" placeholder="Additional Details"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Payment Modal -->
+  <div id="paymentModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Complete Your Booking</h2>
+      <div id="paymentDetails"></div>
+      <form id="payment-form">
+        <div class="form-group">
+          <input type="text" id="customerName" placeholder="Full Name" required>
+        </div>
+        <div class="form-group">
+          <input type="email" id="customerEmail" placeholder="Email" required>
+        </div>
+        <div class="form-group">
+          <input type="tel" id="customerPhone" placeholder="Phone Number" required>
+        </div>
+        <div class="form-group">
+          <input type="date" id="appointmentDate" required>
+        </div>
+        <div class="form-group">
+          <select id="appointmentTime" required>
+            <option value="">Select Time</option>
+            <option value="8:00 AM">8:00 AM</option>
+            <option value="9:00 AM">9:00 AM</option>
+            <option value="10:00 AM">10:00 AM</option>
+            <option value="11:00 AM">11:00 AM</option>
+            <option value="12:00 PM">12:00 PM</option>
+            <option value="1:00 PM">1:00 PM</option>
+            <option value="2:00 PM">2:00 PM</option>
+            <option value="3:00 PM">3:00 PM</option>
+            <option value="4:00 PM">4:00 PM</option>
+            <option value="5:00 PM">5:00 PM</option>
+          </select>
+        </div>
+        <div id="card-element"></div>
+        <div id="card-errors" role="alert"></div>
+        <button type="submit" class="btn btn-primary" id="submit-payment">
+          <span id="button-text">Pay Now</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>Sudz and Bubbz</h4>
+          <p>Your trusted partner for professional car detailing services.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#services">Exterior Detailing</a></li>
+            <li><a href="#services">Interior Detailing</a></li>
+            <li><a href="#services">Paint Protection</a></li>
+            <li><a href="#services">Mobile Service</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2024 Sudz and Bubbz. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
